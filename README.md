@@ -1,2 +1,0 @@
-# QuizBee
-Created with CodeSandbox
