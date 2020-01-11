@@ -30,7 +30,7 @@ class App extends Component {
             ({ question, answers, correct, questionId }) => (
               <QuestionBox
                 question={question}
-                answers={answers}
+                options={answers}
                 correct={correct}
                 key={questionId}
               />
