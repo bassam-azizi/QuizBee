@@ -1,10 +1,10 @@
 import React from "react";
-import "./styles.css";
+import "./assets/style.css";
 
 export default function App() {
   return (
-    <div className="App">
-      <h1>QuizBee</h1>
+    <div className="container">
+      <div className="title">QuizBee</div>
     </div>
   );
 }
