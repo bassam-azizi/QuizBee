@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./assets/style.css";
 import quizService from "./quizServices";
 import QuestionBox from "./component/questionBox";
+import Result from "./component/result";
 
 class App extends Component {
   state = {
