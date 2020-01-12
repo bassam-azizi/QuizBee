@@ -36,6 +36,11 @@ class App extends Component {
     this.getQuestion();
   }
 
+  resetGame = () => {
+    this.getQuestion();
+    this.setState({ score: 0, responses: 0 });
+  };
+
   render() {
     return (
       <div className="container">
@@ -52,7 +57,9 @@ class App extends Component {
               />
             )
           )}
-        {this.state.responses === 5 ? <h2>{this.state.score}</h2> : null}
+        {this.state.responses === 5 ? (
+          <Result score={this.state.score} playAgain={this.resetGame} />
+        ) : null}
       </div>
     );
   }
