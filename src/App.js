@@ -5,7 +5,9 @@ import QuestionBox from "./component/questionBox";
 
 class App extends Component {
   state = {
-    questionBank: []
+    questionBank: [],
+    score: 0,
+    responses: 0
   };
 
   getQuestion = () => {
@@ -16,8 +18,20 @@ class App extends Component {
     });
   };
 
+  computeAnswer = (answer, correctAnswer) => {
+    if (answer === correctAnswer) {
+      this.setState({
+        score: this.state.score + 1
+      });
+    }
+    console.log(this.state.score);
+    this.setState({
+      responses: this.state.responses < 5 ? this.state.responses + 1 : 5
+    });
+    console.log(this.state.responses);
+  };
+
   componentDidMount() {
-    console.log(this.state.questionBank);
     this.getQuestion();
   }
 
@@ -26,16 +40,18 @@ class App extends Component {
       <div className="container">
         <div className="title">QuizBee</div>
         {this.state.questionBank.length > 0 &&
+          this.state.responses < 5 &&
           this.state.questionBank.map(
             ({ question, answers, correct, questionId }) => (
               <QuestionBox
+                key={questionId}
                 question={question}
                 options={answers}
-                correct={correct}
-                key={questionId}
+                selected={answer => this.computeAnswer(answer, correct)}
               />
             )
           )}
+        {this.state.responses === 5 ? <h2>{this.state.score}</h2> : null}
       </div>
     );
   }
